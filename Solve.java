@@ -48,8 +48,11 @@ for(int i=1; i<= r;++i){
 
  }
 }
-}
 
+for(int m=1; m<=r*c; ++m){
+  getChild(m);
+}
+}
 void setStatus(int n, int m){
   //System.out.println(n);
 status[n-1]=m;
@@ -113,8 +116,8 @@ if (sg[n-1]>=1){
    int temp3=childNumber[n-1];
    //System.out.println(n);
    for(int i=1; i<=temp3;++i){
-     ++sg[child[n-1][i-1]-1];
-     getChild(child[n-1][i-1]);
+     //++sg[child[n-1][i-1]-1];
+     //getChild(child[n-1][i-1]);
      //System.out.println(childNumber[child[n-1][i-1]-1]);
 
     if(temp>=childNumber[child[n-1][i-1]-1]){
@@ -171,11 +174,11 @@ System.out.println(convertX(trace[i]) + " " + convertY(trace[i]));
 //System.out.println(trace[i]);
 }
 }
-void explore(int n){
+boolean explore(int n){
   int temp2=0;
   int temp3=0;
   //++sg[n-1];
-  getChild(n);
+  //getChild(n);
 
   ++traceCount;
   setStatus(n,1);
@@ -184,13 +187,15 @@ void explore(int n){
   //System.out.println(trace[traceCount-1]);
   if (traceCount==r*c){
     printTrace();
-    return;
+    return true;
   } else{
     //System.out.println(n+ " " + childNumber[n-1]);
+    //System.out.println(carry + " " + carryx);
     if ((childNumber[n-1]==0)||((carry==0)&&(carryx==0))){
-    System.out.println("Case #" + k + ": " + "IMPOSSIBLE" );
-      return;
-  } else {
+      return false;
+    }
+  //  System.out.println("Case #" + k + ": " + "IMPOSSIBLE" );
+//  } else {
     //System.out.println("problem belongs here");
     int[] d = getmChild(n);
     //System.out.println(d);
@@ -205,7 +210,8 @@ int[] tempx = new int[d[1]];
 
     }
   }
-  carry=temp2;
+  //carry=temp2;
+  //System.out.println(carry);
   if (temp2!=0){
   Random rand = new Random();
   int c = rand.nextInt(temp2);
@@ -224,6 +230,7 @@ int[] tempx = new int[d[1]];
       }
     }
     carryx=temp3;
+    //System.out.println(carryx);
     if (temp3!=0){
     Random rand = new Random();
     int c = rand.nextInt(temp3);
@@ -231,10 +238,12 @@ int[] tempx = new int[d[1]];
     //System.out.println(temp[c]);
     explore(tempx[c]);
   }
+  else {return false;}
   }
 
 }
 }
+return false;
 }
 }
   //if (n!=0){
@@ -297,7 +306,7 @@ int[] tempx = new int[d[1]];
 //}
 //}
 //}
-}
+
 
 
 
@@ -312,14 +321,19 @@ public class Solve{
         for (int k = 1; k <= t; ++k) {
           int r = in.nextInt();
           int c = in.nextInt();
-          Maze sol = new Maze(r,c,k);
+
           //for(int i=1; i<=100; ++i){
         //  Random first = new Random();
           //int start = first.nextInt(r*c);
-          System.out.println(k);
+          //System.out.println(k);
           //sol.getChild(1);
-          sol.explore(1);
-
+          boolean found = false;
+          for (int j=1;j<=r*c;j++){
+            Maze sol = new Maze(r,c,k);
+          if (sol.explore(j)){ found = true;break;}
+}
+if ( found==false){
+System.out.println("Case #" + k +  ": "+ "IMPOSSIBLE");}
           //System.out.println(sol.status[5]);
         //}
         }
