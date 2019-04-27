@@ -64,8 +64,7 @@ void reset(){
     status[i-1]=0;
   }
 }
-//void setPrev(int n){
-//prev[trace[traceCount-1]-1]=trace[traceCount];
+
 int convertX(int n){
   if(n<=c){
     return 1;
@@ -144,30 +143,7 @@ mChildArray[0]=temp1;
 mChildArray[1]=temp2;
    return mChildArray;
  }
-//public int goBack(int n){
-  //setStatus(n,0);
-  //--traceCount;
-//  prev[trace[traceCount-1]-1]=trace[traceCount];
-//if(traceCount==1){
-//System.out.println("Case #" + k + ": " + "IMPOSSIBLE" );
-//return 0;
-//} else{
 
-//System.out.println(traceCount);
-
-//System.out.println(traceCount);
-//if((childCount[traceCount-1])==(childNumber[traceCount-1])){
-  //childCount[trace[traceCount-1]]=0;
-  //System.out.println(traceCount);
-  //goBack(trace[traceCount-1]);
-//}
-//--traceCount;
-//return trace[traceCount-1];
-//}
-
-
-
-//}
 void printTrace(){
 System.out.println("Case #" + k + ": " + "POSSIBLE" );
 for(int i=0; i<traceCount;++i){
@@ -250,70 +226,7 @@ int[] tempx = new int[d[1]];
 }
 } //else if tracecount ==rc 
 } // explore()
-  //if (n!=0){
-    //++traceCount;
-  //trace[traceCount-1]=n;
-  //setStatus(n,1);
-  //getChild(n);
-  //System.out.println(traceCount);
-  //if (childNumber[n-1]==0){
-  //System.out.println("Case #" + k + ": " + "IMPOSSIBLE" );
-  //}
-//if (traceCount==r*c){
-//printTrace();
-//}else{
-
-
-//if (childNumber[n-1]!=0){
-  //System.out.println(childCount[9-1] + " " + status[9-1]);
-  //if(childCount[n-1]!=childNumber[n-1]){
-
-//childCount[n-1]=0;
-//Random rand = new Random();
-
-//int c = rand.nextInt(childNumber[n-1]);
-//if (traceCount>=2){
-//if (c==trace[traceCount-1-1]){
-  //c=rand.nextInt(childNumber[n-1]);
-//}
-//}
-  //for(int i=childCount[n-1]+1; i<=childNumber[n-1]; ++i){
-    //System.out.println(child[n-1][i-1]);
-    //System.out.println(child[n-1][c]);
-    //System.out.println(child[n-1][i-1] + " " + n );
-  //if (status[child[n-1][c]-1]==0){
-   //System.out.println(childCount[child[n-1][childCount[n-1]-1]]);
-   //&& (child[n-1][i-1]!=prev[n-1]))
-//   ++childCount[n-1];
-//++childCount[child[n-1][c]-1];
-
-//System.out.println(child[n-1][childCount[n-1]-1]);
-  //explore(child[n-1][c]);
-//}
-//++childCount[n-1];
-//else if (((status[(child[n-1][childCount[n-1]-1-1])-1]))==0){
-//explore(child[n-1][childCount[n-1]-1-1]);
-//}
-
-
-
-//if (childCount[n-1]==childNumber[n-1]){
-  //--childCount[trace[traceCount-2]-1];
-  //childCount[trace[(traceCount-1)]]=0;
-//System.out.println(goBack(n));
-//explore(goBack(n));
-
-//}
-//}
-//}
-//}
-//}
-//}
-//}
-
-
-
-
+  
 
 public class Main{
 
