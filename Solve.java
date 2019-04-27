@@ -16,6 +16,7 @@ static  int[] status;
   int[][] maxChild;
   int carry=-1;
   int carryx=-1;
+  boolean success = false;
 //  int[] prev;
 public Maze(int t1, int t2, int t3) {
   r=t1;
@@ -174,7 +175,10 @@ System.out.println(convertX(trace[i]) + " " + convertY(trace[i]));
 //System.out.println(trace[i]);
 }
 }
-boolean explore(int n){
+void explore(int n){
+    if (success){
+        return;
+    }
   int temp2=0;
   int temp3=0;
   //++sg[n-1];
@@ -187,15 +191,15 @@ boolean explore(int n){
   //System.out.println(trace[traceCount-1]);
   if (traceCount==r*c){
     printTrace();
-    return true;
+    success = true;
   } else{
     //System.out.println(n+ " " + childNumber[n-1]);
     //System.out.println(carry + " " + carryx);
     if ((childNumber[n-1]==0)||((carry==0)&&(carryx==0))){
-      return false;
-    }
+      return ;
+    
   //  System.out.println("Case #" + k + ": " + "IMPOSSIBLE" );
-//  } else {
+  } else {
     //System.out.println("problem belongs here");
     int[] d = getmChild(n);
     //System.out.println(d);
@@ -238,14 +242,14 @@ int[] tempx = new int[d[1]];
     //System.out.println(temp[c]);
     explore(tempx[c]);
   }
-  else {return false;}
+  
   }
 
 }
 }
-return false;
 }
-}
+} //else if tracecount ==rc 
+} // explore()
   //if (n!=0){
     //++traceCount;
   //trace[traceCount-1]=n;
@@ -311,7 +315,7 @@ return false;
 
 
 
-public class Solve{
+public class Main{
 
   public static void main(String[] args) {
 
@@ -330,7 +334,10 @@ public class Solve{
           boolean found = false;
           for (int j=1;j<=r*c;j++){
             Maze sol = new Maze(r,c,k);
-          if (sol.explore(j)){ found = true;break;}
+            sol.explore(j);
+            if (sol.success) {found=true;break;}
+              
+          
 }
 if ( found==false){
 System.out.println("Case #" + k +  ": "+ "IMPOSSIBLE");}
