@@ -184,10 +184,12 @@ void explore(int n){
   //System.out.println(trace[traceCount-1]);
   if (traceCount==r*c){
     printTrace();
+    return;
   } else{
     //System.out.println(n+ " " + childNumber[n-1]);
     if ((childNumber[n-1]==0)||((carry==0)&&(carryx==0))){
     System.out.println("Case #" + k + ": " + "IMPOSSIBLE" );
+      return;
   } else {
     //System.out.println("problem belongs here");
     int[] d = getmChild(n);
